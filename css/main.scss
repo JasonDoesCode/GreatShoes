@@ -28,6 +28,11 @@ img {
     margin: 0 auto;
 }
 
+// all children of this class, except the first, recieve these properties
+.spacing>*+* {
+    margin-top: var(--spacer, 2rem)
+}
+
 .btn {
     // anchors/links are default line, so making it a block ensures it doesn't overlap
     display: inline-block;
@@ -55,6 +60,24 @@ img {
 .primary-title {
     font-size: 4rem;
     // clamp(smallers, rate of growth, biggest)
-    font-size: clamp(3rem, calc (5vw + 1rem), 4.5rem);
+    font-size: clamp(3rem, calc(5vw + 1rem), 4.5rem);
     text-transform: uppercase;
+    line-height: 1;
+}
+
+.hero {
+    color: white;
+    text-align: center;
+    padding: 15em 0;
+    background-color: #222;
+
+    @supports(background-blend-mode: multiply) {
+        background-image: url(../images/shoe-3.png),
+            radial-gradient(#999, #333);
+        background-blend-mode: multiply;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
 }
