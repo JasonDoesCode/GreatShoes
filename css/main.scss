@@ -24,13 +24,28 @@ img {
 }
 
 section {
-    padding: 7em 0;
+    padding: 5em 0;
 }
 
 .container {
     width: 85%;
     max-width: 65em;
     margin: 0 auto;
+}
+
+.split {
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &>* {
+        // Maximum percent for the image
+        flex-basis: 30%;
+
+        // Minimum amount for the image
+        min-width: 15em;
+    }
 }
 
 // Add a margin to the two children of this class that is after the first
@@ -71,6 +86,8 @@ section {
     text-align: center;
     font-size: clamp(2.5rem, calc(5vw + 1rem), 4rem);
     color: #17353d;
+    line-height: 1;
+    margin-bottom: 5rem;
 }
 
 .hero {
@@ -86,5 +103,33 @@ section {
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-position: center center;
+    }
+}
+
+.featured {
+    background: #eee;
+
+    &__item {
+        display: block;
+        position: relative;
+        transform: scale(.85);
+        transition: transform 250ms ease-in-out;
+
+        &:hover,
+        &:focus {
+            transform: scale(1);
+        }
+
+        // Background Circle - Psuedo Element
+        &::after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            padding: 75% 75% 0 0;
+            border-radius: 50%;
+            background: #2193b0;
+            z-index: -1;
+        }
     }
 }
